@@ -25,7 +25,7 @@ const postUserQuery = async (user) => {
     return result[0];  //רק משתמש אחד ממערך התוצאות
 }
 
-const getAllUsersQuery = async (email, password) => {
+const getAllUsersQuery = async () => {
     const query = `SELECT * FROM shop_db.user_tbl`;
     const result = await promiseQuery(query);
     if (result.length == 0)
