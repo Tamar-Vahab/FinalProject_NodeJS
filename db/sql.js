@@ -6,9 +6,8 @@ const mySqlConnection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "1234",
-    database: "todos"
+    database: "shop_db"
 });
-
 
 const promiseQuery = (sql) => {
     return util.promisify(mySqlConnection.query).call(mySqlConnection, sql);
