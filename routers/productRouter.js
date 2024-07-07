@@ -32,9 +32,9 @@ productsRouter.post('/add', async (req, res) => {
     }
 })
 
-productsRouter.put('/update', async (req, res) => {
+productsRouter.put('/update/:id', async (req, res) => {
     const product = req.body;
-    const id = req.body.id;
+    const {id} = req.params;
 
     try {
         const result = await updateProduct(id, product);
