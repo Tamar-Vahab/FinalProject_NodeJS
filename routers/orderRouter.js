@@ -66,9 +66,10 @@ ordersRouter.get('/total/:userid', async (req, res) => {
 })
 
 ordersRouter.get('/countOrdersByUser/:userid', async (req, res) => {
+    console.log(req.params.userid);
     const { userid } = req.params;
     try {
-        const count = await countOfOrderByUser(userid);
+        const count = await countOfOrderByUser(req.params.userid);
         res.status(200).send({ success: true, count: count });
     }
     catch (err) {
@@ -92,10 +93,10 @@ ordersRouter.delete('/delete/:id', async (req, res) => {
 
 ordersRouter.put('/update/:id', async (req, res) => {
     const { id } = req.params;
-    const { order } = req.body;
+    const order  = req.body;
     try {
         const result = await pustOrder(id, order);
-        if (result == true)
+        if (result)
             res.status(200).send({ success: true, order: order });
         else
             res.status(401).send({ success: false, order: null });

@@ -43,6 +43,7 @@ const deleteOrder = async (id) => {
 }
 
 const countOfOrderByUser = async (userid) => {
+    console.log('countOfOrderByUser: ', userid);
     const count = await countOfOrderByUserQuery(userid);
     return count;
 }

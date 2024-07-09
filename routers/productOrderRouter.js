@@ -6,7 +6,7 @@ const { postProductOrder, deleteProductOrdersByOrder } = require('../actions/pro
 const productOrdersRouter = Router();
 
 productOrdersRouter.post('/add/:orderId', async (req, res) => {
-    const { productOrder } = req.body;
+    const productOrder  = req.body;
     const orderId = req.params.orderId;
 
     try {

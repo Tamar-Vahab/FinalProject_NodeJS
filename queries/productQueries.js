@@ -20,8 +20,8 @@ const getProductListByOrderId = async (orderid) => {
 
 const postProductQuery = async (product) => {
     const query = `
-        INSERT INTO shop_db.product_tbl (product_name, discrebetion, picture, price, in_stock) 
-        VALUES ("${product.product_name}", "${product.discrebetion}","${product.picture}", ${product.price}, ${product.in_stock.data[0]});
+        INSERT INTO shop_db.product_tbl (product_name, description, picture, price, in_stock) 
+        VALUES ("${product.product_name}", "${product.description}","${product.picture}", ${product.price}, ${product.in_stock.data[0]});
     `;
 
     const result = await promiseQuery(query);
@@ -34,7 +34,7 @@ const updateProductQuery = async (id, product) => {
         UPDATE product_tbl
         SET 
             product_name = "${product.product_name}",
-            discrebetion = "${product.discrebetion}",
+            description = "${product.description}",
             picture = "${product.picture}",
             price = ${product.price},
             in_stock = ${product.in_stock.data[0]}
