@@ -1,10 +1,15 @@
 const jwt = require("jsonwebtoken");
 
-const { getAllProductsQuery, postProductQuery, updateProductQuery, deleteProductQuery } = require("../queries/productQueries");
+const { getAllProductsQuery, getProductListByOrderId, postProductQuery, updateProductQuery, deleteProductQuery } = require("../queries/productQueries");
 
 
 const getAllProducts = async () => {
     const products = await getAllProductsQuery();
+    return products;
+}
+
+const getAllProductsByOrderId = async (orderid) => {
+    const products = await getProductListByOrderId(orderid);
     return products;
 }
 
@@ -23,4 +28,4 @@ const deleteProduct = async (id) => {
     return result;
 }
 
-module.exports = { getAllProducts, addProduct, updateProduct, deleteProduct };
+module.exports = { getAllProducts, addProduct, updateProduct, deleteProduct, getAllProductsByOrderId };

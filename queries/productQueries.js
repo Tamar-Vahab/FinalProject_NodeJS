@@ -7,6 +7,17 @@ const getAllProductsQuery = async () => {
     return result;
 }
 
+const getProductListByOrderId = async (orderid) => {
+    const query = `
+        SELECT P.*, PO.order_id
+        FROM product_tbl P join product_order_tbl PO
+        ON P.product_id = PO.product_id
+        WHERE PO.order_id = ${orderid}`;
+    const result = await promiseQuery(query);
+    
+    return result
+}
+
 const postProductQuery = async (product) => {
     const query = `
         INSERT INTO shop_db.product_tbl (product_name, discrebetion, picture, price, in_stock) 
@@ -45,4 +56,4 @@ const deleteProductQuery = async (id) => {
     return true;
 }
 
-module.exports = { getAllProductsQuery, postProductQuery, updateProductQuery, deleteProductQuery }  
+module.exports = { getAllProductsQuery, postProductQuery, updateProductQuery, deleteProductQuery, getProductListByOrderId }  
